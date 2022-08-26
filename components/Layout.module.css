@@ -1,0 +1,34 @@
+.container {
+  max-width: 36rem;
+  padding: 0 1rem;
+  margin: 3rem auto 6rem;
+}
+
+.header {
+  font-size: 1.5rem;
+  color: white;
+  background-color: rgb(40, 40, 40);
+  padding: 10px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(40, 40, 40);
+  color: white;
+}
+
+.navlink {
+  margin-right: 20px;
+}
+
+.homelink {
+  color: white;
+  font-size: 2rem;
+}
+
+.homelink:hover {
+  text-decoration: none;
+}
