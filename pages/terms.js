@@ -30,7 +30,7 @@ export default function TermsPage() {
       </button>
       <style jsx>{`
         .terms {
-          font-size: 0.3rem;
+          font-size: 1rem;
         }
       `}</style>
     </Layout>

@@ -10,7 +10,7 @@ export default function IndexPage() {
         width={900}
         alt="wild code school logo"
       />
-      <p>Hello Wilder !</p>
+      <p>Hello BOLOSS !</p>
     </Layout>
   );
 }

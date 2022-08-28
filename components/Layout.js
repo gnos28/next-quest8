@@ -8,7 +8,7 @@ export default function Layout({ children, pageTitle }) {
     <>
       <Head>
         <link rel="icon" href="/favicon.png" />
-        <title>{pageTitle ? `${pageTitle} - ` : ""}Be Wild</title>
+        <title>{`${pageTitle.length > 0 && pageTitle + " - "}Be Wild`}</title>
       </Head>
       <header className={styles.header}>
         <Link href="/">
