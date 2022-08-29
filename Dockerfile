@@ -2,7 +2,7 @@ FROM node:18
 
 WORKDIR /usr/src/app
 
-COPY ./package*.json .
+COPY ./package*.json ./
 
 # RUN npx npm-check-updates -u
 RUN npm install

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import Layout from "../components/Layout";
-import { getCampuses } from "../models/campus";
 import styles from "/styles/campuses.module.css";
+import { getCampuses } from "../models/campus";
 
 const LIMIT = 5;
 
@@ -20,8 +20,6 @@ export default function CampusesPage({
   const router = useRouter();
   const { currentPage, perPage } = router.query;
 
-  console.log("router.query", currentPage, perPage);
-
   const getAxiosData = async () => {
     const axiosResult = await axios.get(
       `http://localhost:3000/api/campuses?limit=${perPage || LIMIT}&offset=${
@@ -30,8 +28,6 @@ export default function CampusesPage({
     );
     setTotalCount(axiosResult.headers["x-total-count"]);
     const axiosData = axiosResult.data;
-
-    console.log("axiosData", axiosData);
 
     setCampuses(axiosData);
   };
@@ -63,11 +59,15 @@ export default function CampusesPage({
             href={`/campuses?currentPage=${encodeURIComponent(
               page - 1
             )}&perPage=${encodeURIComponent(perPage || LIMIT)}`}
-            prefetch={false}
           >
             <a className={styles.pageLink}>{page}</a>
           </Link>
         ))}
+      <p>
+        <Link href={`/admin/campuses/new`}>
+          <a className={styles.pageLink}>+</a>
+        </Link>
+      </p>
     </Layout>
   );
 }
@@ -76,17 +76,11 @@ export async function getStaticProps() {
   const currentDate = moment().format("YYYY-MM-DD - HH:mm:ss");
   const [campuses] = await getCampuses(5, 0);
 
-  const axiosResult = await axios.get(
-    `http://localhost:3000/api/campuses?limit=${LIMIT}&offset=0`
-  );
-  const totalCount = axiosResult.headers["x-total-count"];
-  const axiosData = axiosResult.data;
-
-  console.log("axiosData", axiosData, totalCount);
+  const totalCount = 0;
 
   return {
     props: {
-      staticCampuses: axiosData,
+      staticCampuses: campuses,
       staticTotalCount: totalCount,
       lastUpdateDate: currentDate,
     },
